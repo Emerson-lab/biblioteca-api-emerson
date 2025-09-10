@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Public } from '../auth/decorators/public.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -7,6 +8,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
+  @Public()
   @Post()
   create(@Body() data: CreateUserDto) {
     return this.usersService.create(data);
