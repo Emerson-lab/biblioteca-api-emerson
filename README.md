@@ -17,14 +17,14 @@ Inclui autenticação JWT, controle de usuários e papéis (roles), gerenciament
 - Node.js 18+
 - MySQL 8+
 - NPM ou Yarn
-- Postman (para testes)
+- Postman ou [APIDog](https://apidog.com/) (para testes)
 
 ---
 
 ## 📂 Estrutura inicial
 - `User` → cadastro de usuários (com roles: ADMIN, TEACHER, COORDINATOR, STUDENT)  
 - `Book` → cadastro e disponibilidade de livros  
-- `Loan` → fluxo de empréstimo e devolução  
+- `Loan` → fluxo de empréstimo e devolução (com transações)  
 
 ---
 
@@ -32,5 +32,37 @@ Inclui autenticação JWT, controle de usuários e papéis (roles), gerenciament
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/SEU_USUARIO/biblioteca-api-emerson.git
+git clone https://github.com/Emerson-lab/biblioteca-api-emerson
 cd biblioteca-api-emerson
+```
+
+### 2. Clonar o repositório
+```bash
+npm install
+```
+
+### 3. Configurar variáveis de ambiente
+Crie um arquivo .env na raiz com:
+```bash
+DATABASE_URL=mysql://root:SUA_SENHA@localhost:3306/biblioteca
+JWT_SECRET=biblioteca_api_dev_secret
+JWT_EXPIRES_IN=1h
+```
+
+### 4. Rodar migrations
+```bash
+npx prisma migrate dev --name init
+```
+
+### 5. Iniciar a aplicação
+```bash
+npm run dev
+```
+
+A API ficará disponível em:  
+👉 [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📝 Autor
+Desenvolvido por **Emerson Trindade**
